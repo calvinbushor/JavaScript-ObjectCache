@@ -1,0 +1,42 @@
+body {
+    
+}
+
+h1, .h1 {
+    color: #333;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+p, .p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 120%;
+}
+
+ul, ol {
+    margin: 15px 30px;
+}
+
+li {
+    margin: 0 0 5px;
+}
+
+pre {
+    background: #ccc;
+    border-radius: 10px;
+    padding: 20px 20px 5px;
+    margin: 10px auto 30px;
+    max-width: 100%;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.subheadline { font-size: 25px; }
+
+#content {
+    width: 80%;
+    padding: 5%;
+    margin: 0 auto;
+}

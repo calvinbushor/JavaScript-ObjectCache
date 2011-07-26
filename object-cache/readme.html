@@ -1,0 +1,103 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Object Cache</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS: implied media="all" -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div id ="content">
+        <h1>ObjectCache()</h1>
+        <p class="subheadline">Reading, writing and modifying Objects made awesomer.</p>
+        
+        <p>What are the properties available to ObjectCache?</p>
+        <ul>
+            <li><strong>.set(key, val)</strong> // Sets a property to your ObjectCache using a kay value pair</li>
+            <li><strong>.get(key)</strong> // Returns the value of a key passed in</li>
+            <li><strong>.remove(key)</strong> // Deletes a property within your ObjectCache</li>
+            <li><strong>.dump()</strong> // Returns the entire ObjectCache</li>
+        </ul>
+
+        <p>This is what's currently in my Object Cache which was set in app.js</p>
+        <ul id="myOc">
+            <li>Author: "Calvin"</li>
+            <li>Twitter: "twitter.com/calvinbushor"</li>
+            <li>people: Object</li>
+        </ul>
+
+        <p>Below is the code that creates your Object Cache and an example of how to set the above objects to it.</p>
+
+        <pre class="javascript">
+            // Create your Object Cache
+            var oc = new ObjectCache();
+
+            // Set a couple things directly to the obj using key value pairs
+            oc.set('Author', 'Calvin');
+            oc.set('Twitter', 'twitter.com/CalvinBushor');
+
+            // Set a dynamic object of people within the Object Cache
+            for ( var i=0; i<9; i++ ) {
+                oc.set('people,person' + i, 'p'+i);
+            }
+        </pre>
+
+        <p>In the Object Cache, there are three things. A persons name, their twitter handle and an object. If you want to access the value of a property within your object see the example below.</p>
+
+        <pre class="javascript">
+            // oc.get(key) returns a value stored in the key if matched and null if nothing matched
+
+            oc.get('Author'); // Returns 'Calvin'
+            oc.get('Twitter'); // Returns 'twitter.com/CalvinBushor'
+        </pre>
+
+        <p>This is what is inside of the People Object</p>
+        <ul id="peopleObj">
+            <li>person0: "p0"</li>
+            <li>person1: "p1"</li>
+            <li>person2: "p2"</li>
+            <li>person3: "p3"</li>
+            <li>person4: "p4"</li>
+            <li>person5: "p5"</li>
+            <li>person6: "p6"</li>
+            <li>person7: "p7"</li>
+            <li>person8: "p8"</li>
+            <li>person9: "p9"</li>
+        </ul>
+
+        <p>If you wanted to access the People Object or any of its' children, see the below example.</p>
+
+        <pre class="javascript">
+            oc.get('people'); // returns the entire people Object
+            oc.get('people,person4'); // returns the value of the 5th person (person4) which is p4
+        </pre>
+
+        <p>If you wanted to delete a property of your Object Cache see the below example.</p>
+        <pre class="javascript">
+            oc.remove('Author'); // Deletes the key Author and its value Calvin from the Object Cache
+        </pre>
+    </div>
+    
+    
+<script src="js/ObjectCache.js"></script>
+<script src="js/ObjectSize.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
